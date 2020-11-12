@@ -21,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
         boton_empezar.setOnClickListener(v -> onClickBotonEmpezar());
     }
     void onClickBotonEmpezar(){
-        Intent i =new Intent(this, Dificultad.class);
+        Intent intent =new Intent(this, Dificultad.class);
         Bundle b=new Bundle();
         b.putString("nombre", nombre.getText().toString());
-        startActivity(i,b);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }
