@@ -1,5 +1,5 @@
 package com.jtc.aprendemates;
 
-public enum Niveles {
+public enum Nivel {
     FACIL, MEDIO, DIFICIL
 }

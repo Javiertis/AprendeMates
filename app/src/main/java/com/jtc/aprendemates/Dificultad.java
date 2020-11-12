@@ -22,11 +22,11 @@ public class Dificultad extends AppCompatActivity {
         medio=findViewById(R.id.button3);
         dificil=findViewById(R.id.button4);
 
-        facil.setOnClickListener(v -> onClickDificulad(Niveles.FACIL));
-        medio.setOnClickListener(v -> onClickDificulad(Niveles.MEDIO));
-        dificil.setOnClickListener(v -> onClickDificulad(Niveles.DIFICIL));
+        facil.setOnClickListener(v -> onClickDificulad(Nivel.FACIL));
+        medio.setOnClickListener(v -> onClickDificulad(Nivel.MEDIO));
+        dificil.setOnClickListener(v -> onClickDificulad(Nivel.DIFICIL));
     }
-    void onClickDificulad(Niveles i){
+    void onClickDificulad(Nivel i){
         Intent intent =new Intent(this, Juego.class);
         Bundle b=new Bundle();
         b.putString("nombre", nombre);
