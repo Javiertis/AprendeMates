@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Aprende Mates</string>
+    <string name="boton_empezar">EMPEZAR</string>
+    <string name="hint_text">Nombre</string>
+    <string name="facil">FACIL</string>
+    <string name="medio">MEDIO</string>
+    <string name="dificl">DÍFCIL</string>
+</resources>
