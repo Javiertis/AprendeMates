@@ -1,10 +1,10 @@
 package com.jtc.aprendemates;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Dificultad extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class Dificultad extends AppCompatActivity {
         Intent intent =new Intent(this, Juego.class);
         Bundle b=new Bundle();
         b.putString("nombre", nombre);
-        b.putInt("dificultad", i.ordinal());
+        b.putString("dificultad", i.name());
         intent.putExtras(b);
         startActivity(intent);
     }
