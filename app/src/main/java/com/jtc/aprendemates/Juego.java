@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class Juego extends AppCompatActivity {
     Bundle b;
     Jugador j;
@@ -15,6 +17,17 @@ public class Juego extends AppCompatActivity {
     Button btComprobar;
     TextView txtOperacion, txtScore;
     EditText edTxtNum;
+    static int[] imagenesNum = {
+            R.drawable.ic_num1,
+            R.drawable.ic_num2,
+            R.drawable.ic_num3,
+            R.drawable.ic_num4,
+            R.drawable.ic_num5,
+            R.drawable.ic_num6,
+            R.drawable.ic_num7,
+            R.drawable.ic_num8,
+            R.drawable.ic_num9};
+    int resultadoEsperado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +43,7 @@ public class Juego extends AppCompatActivity {
         txtOperacion = findViewById(R.id.txtOperacion);
         txtScore = findViewById(R.id.txtScore);
         edTxtNum = findViewById(R.id.edTxtNum);
-
+        dificultad(j.getDificultad());
     }
 
     void dificultad(Nivel n) {
@@ -44,6 +57,14 @@ public class Juego extends AppCompatActivity {
     }
 
     void facil() {
+        txtOperacion.setText("+");
+        Random r = new Random();
+        int n1 = r.nextInt(8);
+        int n2 = r.nextInt(8);
+        imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
+        imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
+        resultadoEsperado = n2 + n1 + 2;
+
     }
 
     void medio() {
@@ -51,6 +72,5 @@ public class Juego extends AppCompatActivity {
 
     void dificil() {
     }
-
 
 }
