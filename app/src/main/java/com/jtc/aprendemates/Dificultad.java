@@ -15,12 +15,12 @@ public class Dificultad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dificultad);
-        bundle=getIntent().getExtras();
+        bundle = getIntent().getExtras();
         nombre = bundle.getString("nombre");
 
-        facil=findViewById(R.id.button2);
-        medio=findViewById(R.id.button3);
-        dificil=findViewById(R.id.button4);
+        facil = findViewById(R.id.btFacil);
+        medio = findViewById(R.id.btMedio);
+        dificil = findViewById(R.id.btDificl);
 
         facil.setOnClickListener(v -> onClickDificulad(Nivel.FACIL));
         medio.setOnClickListener(v -> onClickDificulad(Nivel.MEDIO));

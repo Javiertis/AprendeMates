@@ -7,7 +7,7 @@
     tools:context=".Dificultad">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btFacil"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/facil"
@@ -19,25 +19,25 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btMedio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/medio"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="@+id/btFacil"
+        app:layout_constraintStart_toStartOf="@+id/btFacil"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btDificl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/dificl"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="@+id/btMedio"
+        app:layout_constraintStart_toStartOf="@+id/btMedio"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75" />
 </androidx.constraintlayout.widget.ConstraintLayout>

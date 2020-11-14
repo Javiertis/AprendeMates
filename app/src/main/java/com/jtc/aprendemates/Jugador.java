@@ -1,14 +1,16 @@
 package com.jtc.aprendemates;
 
 public class Jugador {
-    private String nombre;
+    private final String nombre;
     private int score;
     private Nivel dificultad;
+    private int vidas;
 
     public Jugador(String nombre, String dificultad) {
         this.nombre = nombre;
         this.dificultad = Nivel.valueOf(dificultad);
         this.score = 0;
+        this.vidas = 3;
     }
 
     public int getScore() {
@@ -27,12 +29,12 @@ public class Jugador {
         this.dificultad = dificultad;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getVidas() {
+        return vidas;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void reducirVidas() {
+        vidas--;
     }
 
     @Override
