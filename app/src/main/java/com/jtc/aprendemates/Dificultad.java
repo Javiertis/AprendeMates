@@ -10,7 +10,8 @@ public class Dificultad extends AppCompatActivity {
 
     String nombre;
     Bundle bundle;
-    Button facil,medio,dificil;
+    Button facil, medio, dificil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +27,10 @@ public class Dificultad extends AppCompatActivity {
         medio.setOnClickListener(v -> onClickDificulad(Nivel.MEDIO));
         dificil.setOnClickListener(v -> onClickDificulad(Nivel.DIFICIL));
     }
-    void onClickDificulad(Nivel i){
-        Intent intent =new Intent(this, Juego.class);
-        Bundle b=new Bundle();
+
+    void onClickDificulad(Nivel i) {
+        Intent intent = new Intent(this, Juego.class);
+        Bundle b = new Bundle();
         b.putString("nombre", nombre);
         b.putString("dificultad", i.name());
         intent.putExtras(b);

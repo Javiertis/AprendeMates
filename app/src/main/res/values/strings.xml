@@ -4,5 +4,9 @@
     <string name="hint_text">Nombre</string>
     <string name="facil">FACIL</string>
     <string name="medio">MEDIO</string>
-    <string name="dificl">DÍFCIL</string>
+    <string name="dificil">DÍFCIL</string>
+    <string name="vidas">VIDAS</string>
+    <string name="puntuacion">PUNTUACIÓN :</string>
+    <string name="comprobar">COMPROBAR</string>
+    <string name="resultado">Resultado</string>
 </resources>

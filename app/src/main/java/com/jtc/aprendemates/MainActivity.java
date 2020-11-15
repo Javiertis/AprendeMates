@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     void onClickBotonEmpezar() {
         Intent intent = new Intent(this, Dificultad.class);
         Bundle b = new Bundle();
-        b.putString("nombre", nombre.getText().toString());
+        String nombreStr = nombre.getText().toString();
+        b.putString("nombre", nombreStr.equals("") ? "Juagador" : nombreStr);
         intent.putExtras(b);
         startActivity(intent);
     }

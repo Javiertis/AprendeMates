@@ -32,8 +32,8 @@ public class Juego extends AppCompatActivity {
             "-",
             "x"
     };
-    Bundle b;
-    Jugador j;
+    Bundle bundle;
+    Jugador jugador;
     ImageView imgNum1, imgNum2, imgVidas;
     Button btComprobar;
     TextView txtOperacion, txtScore, txtNum1, txtNum2;
@@ -44,24 +44,27 @@ public class Juego extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
-        b = getIntent().getExtras();
-        j = new Jugador(b.getString("nombre"), b.getString("dificultad"));
+        bundle = getIntent().getExtras();
+        jugador = new Jugador(bundle.getString("nombre"), bundle.getString("dificultad"));
 
 
         imgNum1 = findViewById(R.id.imgNum1);
         imgNum2 = findViewById(R.id.imgNum2);
         imgVidas = findViewById(R.id.imgVidas);
         btComprobar = findViewById(R.id.btComprobar);
+
         txtOperacion = findViewById(R.id.txtOperacion);
         txtScore = findViewById(R.id.txtScore);
         txtNum1 = findViewById(R.id.txtNum1);
         txtNum2 = findViewById(R.id.txtNum2);
         edTxtNum = findViewById(R.id.edTxtNum);
-        nivel(j.getDificultad());
+        rellenarOperacion(jugador.getDificultad());
+        txtScore.setText(String.format("%d", jugador.getScore()));
         setImgVidas();
+        btComprobar.setOnClickListener(v -> comprobar());
     }
 
-    void nivel(Nivel n) {
+    void rellenarOperacion(Nivel n) {
         Random r = new Random();
         String op = n == Nivel.FACIL ? operaciones[n.getNivel()] : operaciones[r.nextInt(n.getNivel())];
         int n1 = r.nextInt(imagenesNum.length);
@@ -72,9 +75,9 @@ public class Juego extends AppCompatActivity {
     }
 
     void setImgVidas() {
-        imgVidas.setImageDrawable(getDrawable(imagenesVida[j.getVidas() - 1]));
+        if (jugador.getVidas() >= 1)
+            imgVidas.setImageDrawable(getDrawable(imagenesVida[jugador.getVidas() - 1]));
     }
-
 
     int operacion(String op, int x, int y) {
         txtNum1.setText(String.format("%d", x));
@@ -89,5 +92,24 @@ public class Juego extends AppCompatActivity {
             txtOperacion.setText("x");
             return x * y;
         }
+    }
+
+    void comprobar() {
+        String numStr = edTxtNum.getText().toString();
+        if (!numStr.equals("")) {
+            int resultado = Integer.parseInt(numStr);
+            if (resultado == resultadoEsperado) {
+                rellenarOperacion(jugador.getDificultad());
+                jugador.setScore(jugador.getScore() + 5);
+                txtScore.setText(String.format("%d", jugador.getScore()));
+            } else if (jugador.getVidas() >= 1) {
+                jugador.reducirVidas();
+                setImgVidas();
+                rellenarOperacion(jugador.getDificultad());
+            }
+            rellenarOperacion(jugador.getDificultad());
+
+        }
+        edTxtNum.setText("");
     }
 }
