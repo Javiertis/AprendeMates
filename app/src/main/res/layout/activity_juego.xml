@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imgNum2"
         app:layout_constraintStart_toEndOf="@+id/imgNum1"
@@ -113,4 +114,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPuntos"
         app:layout_constraintTop_toTopOf="@+id/txtPuntos" />
+
+    <TextView
+        android:id="@+id/txtNum1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgNum1"
+        app:layout_constraintStart_toStartOf="@+id/imgNum1"
+        app:layout_constraintTop_toBottomOf="@+id/imgNum1"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <TextView
+        android:id="@+id/txtNum2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgNum2"
+        app:layout_constraintStart_toStartOf="@+id/imgNum2"
+        app:layout_constraintTop_toBottomOf="@+id/imgNum2"
+        app:layout_constraintVertical_bias="0.13" />
 </androidx.constraintlayout.widget.ConstraintLayout>
