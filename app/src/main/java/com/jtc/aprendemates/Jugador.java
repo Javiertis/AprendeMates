@@ -2,14 +2,13 @@ package com.jtc.aprendemates;
 
 public class Jugador {
     private final String nombre;
-    private int score;
+    private int score = 0;
     private Nivel dificultad;
     private int vidas;
 
     public Jugador(String nombre, String dificultad) {
         this.nombre = nombre;
         this.dificultad = Nivel.valueOf(dificultad);
-        this.score = 0;
         this.vidas = 3;
     }
 
