@@ -45,7 +45,7 @@ public class Juego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         bundle = getIntent().getExtras();
-        jugador = new Jugador(bundle.getString("nombre"), bundle.getString("dificultad"));
+        jugador = new Jugador(bundle.getString("nombre"), bundle.getString("dificultad"), bundle.getInt("vidas", 3), bundle.getInt("score", 0));
 
 
         imgNum1 = findViewById(R.id.imgNum1);
@@ -62,7 +62,11 @@ public class Juego extends AppCompatActivity {
         txtScore.setText(String.format("%d", jugador.getScore()));
         setImgVidas();
         btComprobar.setOnClickListener(v -> comprobar());
+
+
     }
+
+    //TODO horizontal
 
     void rellenarOperacion(Nivel n) {
         Random r = new Random();
@@ -112,5 +116,4 @@ public class Juego extends AppCompatActivity {
         }
         edTxtNum.setText("");
     }
-    //TODO ponerlo bonito y actividad de puntuacion
 }
