@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Learn Maths</string>
+    <string name="hint_text">Name</string>
+    <string name="facil">EASY</string>
+    <string name="dificil">HARD</string>
+    <string name="vidas">LIVES</string>
+    <string name="puntuacion">SCORE :</string>
+    <string name="comprobar">CHECK</string>
+    <string name="boton_empezar">START</string>
+    <string name="medio">MEDIUM</string>
+    <string name="resultado">Result</string>
+</resources>

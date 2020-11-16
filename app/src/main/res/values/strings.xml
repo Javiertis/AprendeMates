@@ -2,9 +2,9 @@
     <string name="app_name">Aprende Mates</string>
     <string name="boton_empezar">EMPEZAR</string>
     <string name="hint_text">Nombre</string>
-    <string name="facil">FACIL</string>
+    <string name="facil">FÁCIL</string>
     <string name="medio">MEDIO</string>
-    <string name="dificil">DÍFCIL</string>
+    <string name="dificil">DIFÍCIL</string>
     <string name="vidas">VIDAS</string>
     <string name="puntuacion">PUNTUACIÓN :</string>
     <string name="comprobar">COMPROBAR</string>

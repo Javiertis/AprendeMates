@@ -87,6 +87,7 @@ public class Juego extends AppCompatActivity implements Serializable {
         n2 = savedInstanceState.getInt("n2");
         op = savedInstanceState.getString("op");
         txtScore.setText(String.format("%d", jugador.getScore()));
+        setImgVidas();
         rellenarOperacion();
         super.onRestoreInstanceState(savedInstanceState);
     }
