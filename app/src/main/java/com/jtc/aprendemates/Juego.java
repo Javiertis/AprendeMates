@@ -93,7 +93,7 @@ public class Juego extends AppCompatActivity implements Serializable {
 
     void rellenarOperacion(Nivel n) {
         Random r = new Random();
-        op = n == Nivel.FACIL ? operaciones[n.getNivel()] : operaciones[r.nextInt(n.getNivel())];
+        op = operaciones[r.nextInt(n.getNivel() + 1)];
         n1 = r.nextInt(imagenesNum.length);
         n2 = op.equals("-") ? r.nextInt(n1) : r.nextInt(imagenesNum.length);
         imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
