@@ -12,6 +12,17 @@ public class Jugador {
         this.vidas = 3;
     }
 
+    public Jugador(String nombre, String dificultad, int vidas, int score) {
+        this.nombre = nombre;
+        this.dificultad = Nivel.valueOf(dificultad);
+        this.vidas = vidas;
+        this.score = score;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
     public int getScore() {
         return score;
     }
