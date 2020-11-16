@@ -1,6 +1,8 @@
 package com.jtc.aprendemates;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
     private final String nombre;
     private int score = 0;
     private Nivel dificultad;

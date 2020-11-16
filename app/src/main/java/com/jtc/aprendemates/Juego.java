@@ -6,11 +6,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Juego extends AppCompatActivity {
+public class Juego extends AppCompatActivity implements Serializable {
     static int[] imagenesNum = {
             R.drawable.ic_num1,
             R.drawable.ic_num2,
@@ -38,7 +40,8 @@ public class Juego extends AppCompatActivity {
     Button btComprobar;
     TextView txtOperacion, txtScore, txtNum1, txtNum2;
     EditText edTxtNum;
-    int resultadoEsperado;
+    int resultadoEsperado, n1, n2;
+    String op;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +69,39 @@ public class Juego extends AppCompatActivity {
 
     }
 
-    //TODO horizontal
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        savedInstanceState.putSerializable("jugador", jugador);
+        savedInstanceState.putInt("n1", n1);
+        savedInstanceState.putInt("n2", n2);
+        savedInstanceState.putString("op", op);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+
+        jugador = (Jugador) savedInstanceState.getSerializable("jugador");
+        n1 = savedInstanceState.getInt("n1");
+        n2 = savedInstanceState.getInt("n2");
+        op = savedInstanceState.getString("op");
+        txtScore.setText(String.format("%d", jugador.getScore()));
+        rellenarOperacion();
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 
     void rellenarOperacion(Nivel n) {
         Random r = new Random();
-        String op = n == Nivel.FACIL ? operaciones[n.getNivel()] : operaciones[r.nextInt(n.getNivel())];
-        int n1 = r.nextInt(imagenesNum.length);
-        int n2 = op.equals("-") ? r.nextInt(n1) : r.nextInt(imagenesNum.length);
+        op = n == Nivel.FACIL ? operaciones[n.getNivel()] : operaciones[r.nextInt(n.getNivel())];
+        n1 = r.nextInt(imagenesNum.length);
+        n2 = op.equals("-") ? r.nextInt(n1) : r.nextInt(imagenesNum.length);
+        imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
+        imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
+        resultadoEsperado = operacion(op, n1 + 1, n2 + 1);
+    }
+
+    void rellenarOperacion() {
         imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
         imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
         resultadoEsperado = operacion(op, n1 + 1, n2 + 1);
