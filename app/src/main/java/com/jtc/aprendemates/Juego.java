@@ -1,5 +1,9 @@
 package com.jtc.aprendemates;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,8 +44,10 @@ public class Juego extends AppCompatActivity implements Serializable {
     Button btComprobar;
     TextView txtOperacion, txtScore, txtNum1, txtNum2;
     EditText edTxtNum;
+    ValueAnimator fallo;
     int resultadoEsperado, n1, n2;
     String op;
+    Drawable oldBackground, oldForeground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +67,42 @@ public class Juego extends AppCompatActivity implements Serializable {
         txtNum1 = findViewById(R.id.txtNum1);
         txtNum2 = findViewById(R.id.txtNum2);
         edTxtNum = findViewById(R.id.edTxtNum);
+        oldBackground = edTxtNum.getBackground();
+        oldForeground = edTxtNum.getForeground();
         rellenarOperacion(jugador.getDificultad());
         txtScore.setText(String.format("%d", jugador.getScore()));
         setImgVidas();
         btComprobar.setOnClickListener(v -> comprobar());
+        fallo = (ValueAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.error);
+        fallo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator updatedAnimation) {
+                edTxtNum.setBackgroundColor((Integer) updatedAnimation.getAnimatedValue());
+            }
+        });
+        fallo.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
 
+            }
 
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                edTxtNum.setForeground(oldForeground);
+                edTxtNum.setBackground(oldBackground);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+
+        });
     }
 
     @Override
@@ -138,8 +174,11 @@ public class Juego extends AppCompatActivity implements Serializable {
                 txtScore.setText(String.format("%d", jugador.getScore()));
             } else if (jugador.getVidas() >= 1) {
                 jugador.reducirVidas();
+                fallo.start();
+
                 setImgVidas();
                 rellenarOperacion(jugador.getDificultad());
+
             }
             rellenarOperacion(jugador.getDificultad());
 
