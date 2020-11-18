@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_vertical"
     tools:context=".Juego">
 
     <ImageView
@@ -22,8 +23,9 @@
         android:id="@+id/txtOperacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/verde_marron"
         android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imgNum2"
         app:layout_constraintStart_toEndOf="@+id/imgNum1"
@@ -72,11 +74,9 @@
 
     <TextView
         android:id="@+id/txtPuntos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/txt_juego"
         android:text="@string/puntuacion"
         android:textColor="@color/black"
-        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/imgNum1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -86,11 +86,9 @@
 
     <TextView
         android:id="@+id/txtVidas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/txt_juego"
         android:text="@string/vidas"
         android:textColor="@color/black"
-        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/imgNum1"
         app:layout_constraintEnd_toEndOf="@+id/txtPuntos"
         app:layout_constraintHorizontal_bias="0.0"
@@ -105,17 +103,15 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/txtVidas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/txtVidas"
         app:layout_constraintTop_toTopOf="@+id/txtVidas"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/txtScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        style="@style/txt_juego"
         android:textColor="@color/black"
-        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtPuntos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPuntos"
@@ -125,8 +121,9 @@
         android:id="@+id/txtNum1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/verde_marron"
         android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imgNum1"
         app:layout_constraintStart_toStartOf="@+id/imgNum1"
@@ -137,8 +134,9 @@
         android:id="@+id/txtNum2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/verde_marron"
         android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imgNum2"
         app:layout_constraintStart_toStartOf="@+id/imgNum2"

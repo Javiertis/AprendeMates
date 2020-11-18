@@ -60,6 +60,7 @@ public class Juego extends AppCompatActivity implements Serializable {
         imgNum1 = findViewById(R.id.imgNum1);
         imgNum2 = findViewById(R.id.imgNum2);
         imgVidas = findViewById(R.id.imgVidas);
+
         btComprobar = findViewById(R.id.btComprobar);
 
         txtOperacion = findViewById(R.id.txtOperacion);
