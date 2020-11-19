@@ -32,7 +32,7 @@ public class Juego extends AppCompatActivity implements Serializable {
     static int[] imagenesVida = {
             R.drawable.ic_vida1,
             R.drawable.ic_vida2,
-            R.drawable.ic_vida3,
+            R.drawable.ic_vida3
     };
     static String[] operaciones = {
             "+",
@@ -45,7 +45,7 @@ public class Juego extends AppCompatActivity implements Serializable {
     Button btComprobar;
     TextView txtOperacion, txtScore, txtNum1, txtNum2;
     EditText edTxtNum;
-    ValueAnimator fallo;
+    ValueAnimator animacionFallo;
     int resultadoEsperado, n1, n2;
     String op;
     Drawable oldBackground, oldForeground;
@@ -75,14 +75,14 @@ public class Juego extends AppCompatActivity implements Serializable {
         txtScore.setText(String.format("%d", jugador.getScore()));
         setImgVidas();
         btComprobar.setOnClickListener(v -> comprobar());
-        fallo = (ValueAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.error);
-        fallo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        animacionFallo = (ValueAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.error);
+        animacionFallo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator updatedAnimation) {
                 edTxtNum.setBackgroundColor((Integer) updatedAnimation.getAnimatedValue());
             }
         });
-        fallo.addListener(new Animator.AnimatorListener() {
+        animacionFallo.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
 
@@ -171,24 +171,25 @@ public class Juego extends AppCompatActivity implements Serializable {
         if (!numStr.equals("")) {
             int resultado = Integer.parseInt(numStr);
             if (resultado == resultadoEsperado) {
-                rellenarOperacion(jugador.getDificultad());
                 jugador.setScore(jugador.getScore() + 5);
                 txtScore.setText(String.format("%d", jugador.getScore()));
             } else if (jugador.getVidas() >= 1) {
                 jugador.reducirVidas();
-                fallo.start();
+                animacionFallo.start();
+                if(jugador.getVidas()==0){
+                    perdido();
+                }
                 setImgVidas();
-                rellenarOperacion(jugador.getDificultad());
-            }else{
-                bundle.clear();
-                bundle.putSerializable("jugador", jugador);
-                Intent intent = new Intent(this, Perdido.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
             }
             rellenarOperacion(jugador.getDificultad());
-
         }
         edTxtNum.setText("");
+    }
+    public void perdido(){
+        bundle.clear();
+        bundle.putSerializable("jugador", jugador);
+        Intent intent = new Intent(this, Perdido.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
