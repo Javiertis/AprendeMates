@@ -5,20 +5,27 @@ import android.animation.AnimatorInflater;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.io.Serializable;
 import java.util.Random;
 
 public class Juego extends AppCompatActivity implements Serializable {
-    static int[] imagenesNum = {
+    static final int[] IMAGENES_NUM = {
             R.drawable.ic_num1,
             R.drawable.ic_num2,
             R.drawable.ic_num3,
@@ -29,12 +36,12 @@ public class Juego extends AppCompatActivity implements Serializable {
             R.drawable.ic_num8,
             R.drawable.ic_num9
     };
-    static int[] imagenesVida = {
+    static final int[] IMAGENES_VIDA = {
             R.drawable.ic_vida1,
             R.drawable.ic_vida2,
             R.drawable.ic_vida3
     };
-    static String[] operaciones = {
+    static final String[] OPERACIONES = {
             "+",
             "-",
             "x"
@@ -70,10 +77,12 @@ public class Juego extends AppCompatActivity implements Serializable {
         txtNum2 = findViewById(R.id.txtNum2);
         edTxtNum = findViewById(R.id.edTxtNum);
         oldBackground = edTxtNum.getBackground();
-        oldForeground = edTxtNum.getForeground();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            oldForeground = edTxtNum.getForeground();
+        }
         rellenarOperacion(jugador.getDificultad());
-        txtScore.setText(String.format("%d", jugador.getScore()));
-        setImgVidas();
+        txtScore.setText(Integer.toString(jugador.getScore()));
+        configurarImgVidas();
         btComprobar.setOnClickListener(v -> comprobar());
         animacionFallo = (ValueAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.error);
         animacionFallo.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -86,7 +95,9 @@ public class Juego extends AppCompatActivity implements Serializable {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                edTxtNum.setForeground(oldForeground);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    edTxtNum.setForeground(oldForeground);
+                }
                 edTxtNum.setBackground(oldBackground);
             }
 
@@ -120,8 +131,8 @@ public class Juego extends AppCompatActivity implements Serializable {
         n1 = savedInstanceState.getInt("n1");
         n2 = savedInstanceState.getInt("n2");
         op = savedInstanceState.getString("op");
-        txtScore.setText(String.format("%d", jugador.getScore()));
-        setImgVidas();
+        txtScore.setText(Integer.toString(jugador.getScore()));
+        configurarImgVidas();
         rellenarOperacion();
         super.onRestoreInstanceState(savedInstanceState);
     }
@@ -137,29 +148,29 @@ public class Juego extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onPause() {
-        setImgVidas();
+        configurarImgVidas();
         super.onPause();
     }
 
     void rellenarOperacion(Nivel n) {
         Random r = new Random();
-        op = operaciones[r.nextInt(n.getNivel() + 1)];
-        n1 = r.nextInt(imagenesNum.length);
-        n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(imagenesNum.length);
-        imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
-        imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
+        op = OPERACIONES[r.nextInt(n.getNivel() + 1)];
+        n1 = r.nextInt(IMAGENES_NUM.length);
+        n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(IMAGENES_NUM.length);
+        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n1]));
+        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n2]));
         resultadoEsperado = operacion(op, n1 + 1, n2 + 1);
     }
 
     void rellenarOperacion() {
-        imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
-        imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
+        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n1]));
+        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n2]));
         resultadoEsperado = operacion(op, n1 + 1, n2 + 1);
     }
 
-    void setImgVidas() {
+    void configurarImgVidas() {
         if (jugador.getVidas() >= 1) {
-            imgVidas.setImageDrawable(getDrawable(imagenesVida[jugador.getVidas() - 1]));
+            imgVidas.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_VIDA[jugador.getVidas() - 1]));
         } else {
             imgVidas.setImageAlpha(0);
             imgNum1.setImageAlpha(0);
@@ -171,8 +182,8 @@ public class Juego extends AppCompatActivity implements Serializable {
     }
 
     int operacion(String op, int x, int y) {
-        txtNum1.setText(String.format("%d", x));
-        txtNum2.setText(String.format("%d", y));
+        txtNum1.setText(Integer.toString(x));
+        txtNum2.setText(Integer.toString(y));
         if (op.equals("+")) {
             txtOperacion.setText("+");
             return x + y;
@@ -191,26 +202,43 @@ public class Juego extends AppCompatActivity implements Serializable {
             int resultado = Integer.parseInt(numStr);
             if (resultado == resultadoEsperado) {
                 jugador.setScore(jugador.getScore() + 5);
-                txtScore.setText(String.format("%d", jugador.getScore()));
+                txtScore.setText(Integer.toString(jugador.getScore()));
             } else if (jugador.getVidas() >= 1) {
                 jugador.reducirVidas();
                 animacionFallo.start();
-                setImgVidas();
+                configurarImgVidas();
             }
             if (jugador.getVidas() <= 0) {
-                perdido();
-            } else {
-                rellenarOperacion(jugador.getDificultad());
+                startActivityPerdido();
             }
+            rellenarOperacion(jugador.getDificultad());
+        }
+        if ((jugador.getScore() == 100) || (jugador.getScore() == 200 && jugador.getNivelInicial() == Nivel.FACIL)) {
+            summonToast();
+            jugador.aumentarDificultad();
         }
         edTxtNum.setText("");
     }
 
-    public void perdido() {
+    public void startActivityPerdido() {
+        configurarImgVidas();
         bundle.clear();
         bundle.putSerializable("jugador", jugador);
         Intent intent = new Intent(this, Perdido.class);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+
+    public void summonToast() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,
+                (ViewGroup) findViewById(R.id.custom_toast_container));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+
     }
 }
