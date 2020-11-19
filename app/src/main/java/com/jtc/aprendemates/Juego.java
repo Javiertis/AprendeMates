@@ -83,10 +83,6 @@ public class Juego extends AppCompatActivity implements Serializable {
             }
         });
         animacionFallo.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
 
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -95,15 +91,16 @@ public class Juego extends AppCompatActivity implements Serializable {
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {
+            public void onAnimationStart(Animator animation) {
+            }
 
+            @Override
+            public void onAnimationCancel(Animator animation) {
             }
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-
             }
-
         });
     }
 
@@ -119,7 +116,6 @@ public class Juego extends AppCompatActivity implements Serializable {
 
     @Override
     public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-
         jugador = (Jugador) savedInstanceState.getSerializable("jugador");
         n1 = savedInstanceState.getInt("n1");
         n2 = savedInstanceState.getInt("n2");
@@ -130,11 +126,26 @@ public class Juego extends AppCompatActivity implements Serializable {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
+    @Override
+    protected void onResume() {
+        if (jugador.getVidas() <= 0) {
+            this.startActivity(new Intent(this, MainActivity.class));
+            this.finishAffinity();
+        }
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        setImgVidas();
+        super.onPause();
+    }
+
     void rellenarOperacion(Nivel n) {
         Random r = new Random();
         op = operaciones[r.nextInt(n.getNivel() + 1)];
         n1 = r.nextInt(imagenesNum.length);
-        n2 = op.equals("-") ? r.nextInt(n1) : r.nextInt(imagenesNum.length);
+        n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(imagenesNum.length);
         imgNum1.setImageDrawable(getDrawable(imagenesNum[n1]));
         imgNum2.setImageDrawable(getDrawable(imagenesNum[n2]));
         resultadoEsperado = operacion(op, n1 + 1, n2 + 1);
@@ -151,6 +162,11 @@ public class Juego extends AppCompatActivity implements Serializable {
             imgVidas.setImageDrawable(getDrawable(imagenesVida[jugador.getVidas() - 1]));
         } else {
             imgVidas.setImageAlpha(0);
+            imgNum1.setImageAlpha(0);
+            imgNum2.setImageAlpha(0);
+            txtOperacion.setText("");
+            txtNum1.setText("");
+            txtNum2.setText("");
         }
     }
 
@@ -180,11 +196,12 @@ public class Juego extends AppCompatActivity implements Serializable {
                 jugador.reducirVidas();
                 animacionFallo.start();
                 setImgVidas();
-                if (jugador.getVidas() == 0) {
-                    perdido();
-                }
             }
-            rellenarOperacion(jugador.getDificultad());
+            if (jugador.getVidas() <= 0) {
+                perdido();
+            } else {
+                rellenarOperacion(jugador.getDificultad());
+            }
         }
         edTxtNum.setText("");
     }
@@ -195,6 +212,5 @@ public class Juego extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(this, Perdido.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //this.finishAffinity();
     }
 }

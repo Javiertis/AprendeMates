@@ -45,7 +45,7 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return "Jugador: " + this.nombre + System.lineSeparator()
-                + "Puntuacion: " + this.score;
+        return this.nombre + System.lineSeparator()
+                + this.score;
     }
 }

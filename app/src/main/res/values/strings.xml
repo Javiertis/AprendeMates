@@ -6,7 +6,7 @@
     <string name="medio">MEDIO</string>
     <string name="dificil">DIFÍCIL</string>
     <string name="vidas">VIDAS</string>
-    <string name="puntuacion">PUNTUACIÓN :</string>
+    <string name="puntuacion">PUNTUACIÓN: </string>
     <string name="comprobar">COMPROBAR</string>
     <string name="resultado">Resultado</string>
     <string name="perdido">HAS PERDIDO :(</string>
