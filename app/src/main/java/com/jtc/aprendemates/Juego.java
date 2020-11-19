@@ -3,6 +3,7 @@ package com.jtc.aprendemates;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
@@ -176,10 +177,14 @@ public class Juego extends AppCompatActivity implements Serializable {
             } else if (jugador.getVidas() >= 1) {
                 jugador.reducirVidas();
                 fallo.start();
-
                 setImgVidas();
                 rellenarOperacion(jugador.getDificultad());
-
+            }else{
+                bundle.clear();
+                bundle.putSerializable("jugador", jugador);
+                Intent intent = new Intent(this, Perdido.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
             rellenarOperacion(jugador.getDificultad());
 

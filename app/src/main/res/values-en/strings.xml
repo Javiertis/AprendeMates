@@ -10,4 +10,5 @@
     <string name="boton_empezar">START</string>
     <string name="medio">MEDIUM</string>
     <string name="resultado">Result</string>
+    <string name="perdido">YOU LOST :(</string>
 </resources>
