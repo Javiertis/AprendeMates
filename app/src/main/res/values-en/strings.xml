@@ -11,4 +11,6 @@
     <string name="medio">MEDIUM</string>
     <string name="resultado">Result</string>
     <string name="perdido">YOU LOST :(</string>
+    <string name="reset">RETRY</string>
+    <string name="salir">EXIT</string>
 </resources>

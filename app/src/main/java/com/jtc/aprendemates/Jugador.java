@@ -4,15 +4,9 @@ import java.io.Serializable;
 
 public class Jugador implements Serializable {
     private final String nombre;
-    private int score = 0;
+    private int score;
     private Nivel dificultad;
     private int vidas;
-
-    public Jugador(String nombre, String dificultad) {
-        this.nombre = nombre;
-        this.dificultad = Nivel.valueOf(dificultad);
-        this.vidas = 3;
-    }
 
     public Jugador(String nombre, String dificultad, int vidas, int score) {
         this.nombre = nombre;
@@ -51,10 +45,7 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "nombre='" + nombre + '\'' +
-                ", score=" + score +
-                ", dificultad=" + dificultad +
-                '}';
+        return "Jugador: " + this.nombre + System.lineSeparator()
+                + "Puntuacion: " + this.score;
     }
 }

@@ -10,4 +10,6 @@
     <string name="comprobar">COMPROBAR</string>
     <string name="resultado">Resultado</string>
     <string name="perdido">HAS PERDIDO :(</string>
+    <string name="reset">VOLVER A JUGAR</string>
+    <string name="salir">SALIR</string>
 </resources>
