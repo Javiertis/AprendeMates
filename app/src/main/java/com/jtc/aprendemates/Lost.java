@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jtc.aprendemates.db.AdminSQLiteOpenHelper;
 
-import java.text.DateFormat;
+import java.util.Calendar;
 
 public class Lost extends AppCompatActivity {
 
@@ -54,8 +54,8 @@ public class Lost extends AppCompatActivity {
         SQLiteDatabase dataBase = admin.getWritableDatabase();
         ContentValues insertion = new ContentValues();
 
-        insertion.put("game_date", DateFormat.getDateInstance().toString());
-        insertion.put("player", j.getName());
+        insertion.put("game_date", Calendar.getInstance().getTime().toString());
+        insertion.put("name", j.getName());
         insertion.put("init_level", j.getInitLevel().levelValue() + 1);
         insertion.put("actual_level", j.getActualLevel().levelValue() + 1);
         insertion.put("score", j.getScore());

@@ -26,15 +26,16 @@ public class Ranking extends AppCompatActivity {
         rank = findViewById(R.id.rank);
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "admin", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        Cursor row = db.rawQuery("select * from ranking order by score, actual_level-init_level", null);
-
+        Cursor row = db.rawQuery("select * from ranking order by score desc, actual_level-init_level desc", null);
+        int i = 1;
         while (row.moveToNext()) {
             tw = new TextView(this, null);
-            String str = row.getInt(4) + " " + row.getString(1) + " " + row.getInt(2) + " " + row.getInt(3);
+            String str = i + ".- " + row.getInt(4) + " " + row.getString(1) + " " + row.getInt(2) + " " + row.getInt(3);
             tw.setText(str);
             tw.setGravity(Gravity.CENTER);
             tw.setTextAppearance(R.style.txt_juego);
             rank.addView(tw);
+            i++;
         }
 
         row.close();
