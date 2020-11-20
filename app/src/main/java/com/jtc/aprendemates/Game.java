@@ -25,7 +25,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Game extends AppCompatActivity implements Serializable {
-    private static final int[] NUM_IMG = {
+    static final int[] NUM_IMG = {
             R.drawable.ic_num1,
             R.drawable.ic_num2,
             R.drawable.ic_num3,
@@ -36,12 +36,12 @@ public class Game extends AppCompatActivity implements Serializable {
             R.drawable.ic_num8,
             R.drawable.ic_num9
     };
-    private static final int[] LIFE_IMG = {
+    static final int[] LIFE_IMG = {
             R.drawable.ic_life1,
             R.drawable.ic_life2,
             R.drawable.ic_life3
     };
-    private static final String[] OPERATORS = {
+    static final String[] OPERATORS = {
             "+",
             "-",
             "x"
@@ -217,8 +217,7 @@ public class Game extends AppCompatActivity implements Serializable {
             }
             fillOperation(player.getActualLevel());
         }
-        if ((player.getScore() == 100 && player.getInitLevel().compareTo(Level.MEDIUM) <= 0)
-                || (player.getScore() == 300 && player.getInitLevel() == Level.EASY)) {
+        if ((player.getScore() == 100 && player.getInitLevel().compareTo(Level.MEDIUM) <= 0) || (player.getScore() == 300 && player.getInitLevel() == Level.EASY)) {
             summonToast();
             player.bonusUp();
             player.levelUp();
