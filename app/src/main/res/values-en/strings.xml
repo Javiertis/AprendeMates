@@ -13,4 +13,5 @@
     <string name="perdido">YOU LOST :(</string>
     <string name="reset">RETRY</string>
     <string name="salir">EXIT</string>
+    <string name="subir">LEVEL UP</string>
 </resources>

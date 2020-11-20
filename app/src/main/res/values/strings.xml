@@ -12,5 +12,5 @@
     <string name="perdido">HAS PERDIDO :(</string>
     <string name="reset">VOLVER A JUGAR</string>
     <string name="salir">SALIR</string>
-    <string name="subir">ENHORABUENA HAS SUBIDO DE NIVEL</string>
+    <string name="subir">HAS SUBIDO DE NIVEL</string>
 </resources>
