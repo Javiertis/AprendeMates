@@ -18,10 +18,10 @@
         </activity>
         <activity android:name=".Dificultad" />
         <activity
-            android:name=".Juego"
+            android:name=".Game"
             android:theme="@style/Theme.AprendeMates.NoActionBar" />
         <activity
-            android:name=".Perdido"
+            android:name=".Lost"
             android:theme="@style/Theme.AprendeMates.Dialog" />
     </application>
 

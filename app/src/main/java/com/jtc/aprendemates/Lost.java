@@ -1,25 +1,31 @@
 package com.jtc.aprendemates;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Perdido extends AppCompatActivity {
+import com.jtc.aprendemates.db.AdminSQLiteOpenHelper;
+
+import java.text.DateFormat;
+
+public class Lost extends AppCompatActivity {
 
     TextView mensaje;
     Button salir, reset;
     Bundle b;
-    Jugador j;
+    Player j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perdido);
+        setContentView(R.layout.activity_lost);
         b = getIntent().getExtras();
-        j = (Jugador) b.getSerializable("jugador");
+        j = (Player) b.getSerializable("player");
         salir = findViewById(R.id.btSalir);
         reset = findViewById(R.id.btReset);
         salir.setOnClickListener(v -> this.finishAffinity());
@@ -30,8 +36,9 @@ public class Perdido extends AppCompatActivity {
         });
         mensaje = findViewById(R.id.txtMensaje);
         mensaje.setText(String.format("%s%s%s%d",
-                j.getNombre(), System.lineSeparator(), getResources().getString(R.string.puntuacion), j.getScore()));
+                j.getName(), System.lineSeparator(), getResources().getString(R.string.puntuacion), j.getScore()));
         setFinishOnTouchOutside(true);
+        saveScore();
     }
 
     @Override
@@ -40,5 +47,21 @@ public class Perdido extends AppCompatActivity {
         this.startActivity(intent);
         this.finishAffinity();
         super.onPause();
+    }
+
+    void saveScore() {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "admin", null, 1);
+        SQLiteDatabase dataBase = admin.getWritableDatabase();
+        ContentValues insertion = new ContentValues();
+
+        insertion.put("game_date", DateFormat.getDateInstance().toString());
+        insertion.put("player", j.getName());
+        insertion.put("init_level", j.getInitLevel().name());
+        insertion.put("actual_level", j.getActualLevel().name());
+        insertion.put("score", j.getScore());
+
+        dataBase.insert("ranking", null, insertion);
+        insertion.clear();
+        dataBase.close();
     }
 }

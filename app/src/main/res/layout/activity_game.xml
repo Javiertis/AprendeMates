@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_vertical"
-    tools:context=".Juego">
+    android:background="@drawable/portrait_bg"
+    tools:context=".Game">
 
     <ImageView
         android:id="@+id/imgNum2"

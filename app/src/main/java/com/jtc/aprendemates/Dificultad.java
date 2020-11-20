@@ -15,7 +15,7 @@ public class Dificultad extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dificultad);
+        setContentView(R.layout.activity_level);
         bundle = getIntent().getExtras();
         nombre = bundle.getString("nombre");
 
@@ -23,13 +23,13 @@ public class Dificultad extends AppCompatActivity {
         medio = findViewById(R.id.btMedio);
         dificil = findViewById(R.id.btDificl);
 
-        facil.setOnClickListener(v -> onClickDificulad(Nivel.FACIL));
-        medio.setOnClickListener(v -> onClickDificulad(Nivel.MEDIO));
-        dificil.setOnClickListener(v -> onClickDificulad(Nivel.DIFICIL));
+        facil.setOnClickListener(v -> onClickDificulad(Level.EASY));
+        medio.setOnClickListener(v -> onClickDificulad(Level.MEDIUM));
+        dificil.setOnClickListener(v -> onClickDificulad(Level.HARD));
     }
 
-    void onClickDificulad(Nivel i) {
-        Intent intent = new Intent(this, Juego.class);
+    void onClickDificulad(Level i) {
+        Intent intent = new Intent(this, Game.class);
         Bundle b = new Bundle();
         b.putString("nombre", nombre);
         b.putString("dificultad", i.name());
