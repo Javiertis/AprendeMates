@@ -8,23 +8,23 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    EditText nombre;
-    Button boton_empezar;
+    EditText name;
+    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nombre = findViewById(R.id.txtNombre);
-        boton_empezar = findViewById(R.id.btEmpezar);
-        boton_empezar.setOnClickListener(v -> onClickBotonEmpezar());
+        name = findViewById(R.id.txtNombre);
+        startButton = findViewById(R.id.btEmpezar);
+        startButton.setOnClickListener(v -> onClickBotonEmpezar());
     }
 
     void onClickBotonEmpezar() {
-        Intent intent = new Intent(this, Dificultad.class);
+        Intent intent = new Intent(this, LevelChooser.class);
         Bundle b = new Bundle();
-        String nombreStr = nombre.getText().toString();
-        b.putString("nombre", nombreStr.equals("") ? "Juagador" : nombreStr);
+        String nameStr = this.name.getText().toString();
+        b.putString("name", nameStr.equals("") ? "Player" : nameStr);
         intent.putExtras(b);
         startActivity(intent);
     }
