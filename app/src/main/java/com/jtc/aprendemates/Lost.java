@@ -56,10 +56,9 @@ public class Lost extends AppCompatActivity {
 
         insertion.put("game_date", DateFormat.getDateInstance().toString());
         insertion.put("player", j.getName());
-        insertion.put("init_level", j.getInitLevel().name());
-        insertion.put("actual_level", j.getActualLevel().name());
+        insertion.put("init_level", j.getInitLevel().levelValue() + 1);
+        insertion.put("actual_level", j.getActualLevel().levelValue() + 1);
         insertion.put("score", j.getScore());
-
         dataBase.insert("ranking", null, insertion);
         insertion.clear();
         dataBase.close();

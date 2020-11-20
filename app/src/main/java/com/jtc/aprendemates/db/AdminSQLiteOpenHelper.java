@@ -11,7 +11,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase BaseDeDatos) {
-        BaseDeDatos.execSQL("create table ranking(game_date date primary key, name text, init_level real, last_level real, score real)");
+        BaseDeDatos.execSQL("create table ranking(game_date varchar(20) primary key, name varchar(20), init_level real, actual_level real, score real)");
     }
 
     @Override

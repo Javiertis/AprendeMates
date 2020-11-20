@@ -62,7 +62,7 @@ public class Game extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         bundle = getIntent().getExtras();
-        player = new Player(bundle.getString("nombre"), bundle.getString("dificultad"), bundle.getInt("vidas", 3), bundle.getInt("score", 0));
+        player = new Player(bundle.getString("name"), bundle.getString("level"), bundle.getInt("life", 3), bundle.getInt("score", 0));
 
 
         imgNum1 = findViewById(R.id.imgNum1);
