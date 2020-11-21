@@ -12,5 +12,15 @@
     <string name="perdido">HAS PERDIDO :(</string>
     <string name="reset">VOLVER A JUGAR</string>
     <string name="salir">SALIR</string>
-    <string name="subir">HAS SUBIDO DE NIVEL</string>
+    <string name="has">HAS </string>
+    <string name="subir_nivel_y">SUBIDO DE NIVEL Y </string>
+    <string name="subir_multiplicador">CONSEGUIDO MULTIPLICADOR DE RACHA</string>
+    <string name="info">
+        FÁCIL:
+        Solo sumas, si consigues suficientes puntos puedes subir de nivel y conseguir un multiplicador.
+        MEDIO:
+        Sumas y restas, si consigues suficientes puntos tambien puedes subir de nivel y conseguir un multiplicador.
+        DIFÍCIL:
+        Sumas, restas y multiplicaciones, si consigues suficientes puntos puedes conseguir un multiplicador.
+    </string>
 </resources>

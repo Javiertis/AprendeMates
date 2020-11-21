@@ -77,7 +77,7 @@ public class Game extends AppCompatActivity implements Serializable {
         edTxtNum = findViewById(R.id.edTxtNum);
         oldBackground = edTxtNum.getBackground();
         oldForeground = edTxtNum.getForeground();
-        fillOperation(player.getActualLevel());
+        randomFillOperation(player.getActualLevel());
         txtScore.setText(Integer.toString(player.getScore()));
         setLifeImg();
         btComprobar.setOnClickListener(v -> checkOperation());
@@ -147,7 +147,7 @@ public class Game extends AppCompatActivity implements Serializable {
         super.onPause();
     }
 
-    void fillOperation(Level n) {
+    void randomFillOperation(Level n) {
         Random r = new Random();
         op = OPERACIONES[r.nextInt(n.levelValue() + 1)];
         n1 = r.nextInt(IMAGENES_NUM.length);
@@ -205,14 +205,18 @@ public class Game extends AppCompatActivity implements Serializable {
             if (player.getLife() <= 0) {
                 startActivityPerdido();
             }
-            fillOperation(player.getActualLevel());
+            randomFillOperation(player.getActualLevel());
         }
-        if ((player.getScore() == 100 && player.getInitLevel().compareTo(Level.MEDIUM) <= 0) || (player.getScore() == 300 && player.getInitLevel() == Level.EASY)) {
+        bonusAndLevelCheck();
+        edTxtNum.setText("");
+    }
+
+    private void bonusAndLevelCheck() {
+        if (player.getScore() == 100 || player.getScore() == 300) {
+            if (player.getInitLevel().compareTo(Level.MEDIUM) <= 0) player.levelUp();
             summonToast();
             player.bonusUp();
-            player.levelUp();
         }
-        edTxtNum.setText("");
     }
 
     public void startActivityPerdido() {
@@ -227,13 +231,19 @@ public class Game extends AppCompatActivity implements Serializable {
 
     public void summonToast() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast,
+        View view = inflater.inflate(R.layout.custom_toast,
                 (ViewGroup) findViewById(R.id.custom_toast_container));
+        TextView tw = view.findViewById(R.id.textToast);
+        if (player.getInitLevel().compareTo(Level.MEDIUM) <= 0) {
+            tw.setText(R.string.has + R.string.subir_nivel_y + R.string.subir_multiplicador);
+        } else {
+            tw.setText(R.string.has + R.string.subir_multiplicador);
+        }
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
+        toast.setView(view);
         toast.show();
-
     }
+
 }

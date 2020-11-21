@@ -26,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.ranking) {
+        if (item.getItemId() == R.id.rank) {
             Intent i = new Intent(this, com.jtc.aprendemates.Ranking.class);
             startActivity(i);
         }

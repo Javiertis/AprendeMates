@@ -13,5 +13,14 @@
     <string name="perdido">YOU LOST :(</string>
     <string name="reset">RETRY</string>
     <string name="salir">EXIT</string>
-    <string name="subir">LEVEL UP</string>
+    <string name="subir_nivel_y">LEVEL UP AND</string>
+    <string name="subir_multiplicador">STREAK MULTIPLIER</string>
+    <string name="info">
+        EASY:
+        Only sums. if you get enough points, you would level up and get a streak multiplier.
+        MEDIUM:
+        Sums and subtraction. If you get enough points, you would level up and get a streak multiplier.
+        HARD:
+        Sums, subtraction and multiplications. If you get enough points, you would get a streak multiplier.
+    </string>
 </resources>

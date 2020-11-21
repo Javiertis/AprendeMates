@@ -33,7 +33,7 @@ public class Player implements Serializable {
     }
 
     public void bonusUp() {
-        this.bonus += (this.actualLevel.compareTo(this.initLevel));
+        this.bonus++;
     }
 
     public Level getActualLevel() {
