@@ -30,11 +30,10 @@ public class Ranking extends AppCompatActivity {
             String str = i + ".- " + row.getInt(4) + " " + row.getString(1) + " " + row.getInt(2) + " " + row.getInt(3);
             txt.setText(str);
             txt.setGravity(Gravity.CENTER);
-            txt.setTextAppearance(R.style.txt_juego);
+            txt.setTextAppearance(R.style.txtGame);
             rank.addView(txt);
             i++;
         }
-
         row.close();
         db.close();
     }

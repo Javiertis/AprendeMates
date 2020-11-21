@@ -5,7 +5,7 @@
     <string name="facil">EASY</string>
     <string name="dificil">HARD</string>
     <string name="vidas">LIVES</string>
-    <string name="puntuacion">SCORE :</string>
+    <string name="puntuacion">SCORE: </string>
     <string name="comprobar">CHECK</string>
     <string name="boton_empezar">START</string>
     <string name="medio">MEDIUM</string>

@@ -11,7 +11,7 @@
         android:id="@+id/textToast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/txt_juego"
+        android:textAppearance="@style/txtGame"
         android:textColor="@color/white"
         android:textSize="14sp" />
 </LinearLayout>

@@ -27,7 +27,6 @@ public class Player implements Serializable {
         return score;
     }
 
-
     public void scoreUp() {
         this.score += 5 * (this.bonus);
     }

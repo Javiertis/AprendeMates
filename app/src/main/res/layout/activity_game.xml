@@ -73,7 +73,7 @@
 
     <TextView
         android:id="@+id/txtPuntos"
-        style="@style/txt_juego"
+        style="@style/txtGame"
         android:text="@string/puntuacion"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/imgNum1"
@@ -85,7 +85,7 @@
 
     <TextView
         android:id="@+id/txtVidas"
-        style="@style/txt_juego"
+        style="@style/txtGame"
         android:text="@string/vidas"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/imgNum1"
@@ -109,7 +109,7 @@
 
     <TextView
         android:id="@+id/txtScore"
-        style="@style/txt_juego"
+        style="@style/txtGame"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txtPuntos"
         app:layout_constraintEnd_toEndOf="parent"
