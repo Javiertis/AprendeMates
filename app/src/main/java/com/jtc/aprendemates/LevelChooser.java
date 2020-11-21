@@ -22,9 +22,9 @@ public class LevelChooser extends AppCompatActivity {
         bundle = getIntent().getExtras();
         name = bundle.getString("name");
 
-        btEasy = findViewById(R.id.btFacil);
-        btMedium = findViewById(R.id.btMedio);
-        btHard = findViewById(R.id.btDificl);
+        btEasy = findViewById(R.id.btEasy);
+        btMedium = findViewById(R.id.btMedium);
+        btHard = findViewById(R.id.btHard);
 
         btEasy.setOnClickListener(v -> onClickLevel(Level.EASY));
         btMedium.setOnClickListener(v -> onClickLevel(Level.MEDIUM));
@@ -40,7 +40,7 @@ public class LevelChooser extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.info) {
-            Intent i = new Intent(this, com.jtc.aprendemates.Ranking.class);
+            Intent i = new Intent(this, Info.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

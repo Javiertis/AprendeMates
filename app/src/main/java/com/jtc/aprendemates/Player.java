@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
     private final String name;
-    private int score;
     private final Level initLevel;
+    private int score;
     private Level actualLevel;
     private int life;
     private int bonus;
@@ -33,7 +33,7 @@ public class Player implements Serializable {
     }
 
     public void bonusUp() {
-        this.bonus++;
+        this.bonus += 2;
     }
 
     public Level getActualLevel() {

@@ -15,12 +15,17 @@
     <string name="salir">EXIT</string>
     <string name="subir_nivel_y">LEVEL UP AND</string>
     <string name="subir_multiplicador">STREAK MULTIPLIER</string>
-    <string name="info">
-        EASY:
+    <string name="info_facil_titulo">
+        EASY:</string>
+    <string name="info_facil">
         Only sums. if you get enough points, you would level up and get a streak multiplier.
-        MEDIUM:
+        </string>
+    <string name="info_medio_titulo">MEDIUM:</string>
+    <string name="info_medio">
         Sums and subtraction. If you get enough points, you would level up and get a streak multiplier.
-        HARD:
+       </string>
+    <string name="info_dificil_titulo">HARD:</string>
+    <string name="info_dificil">
         Sums, subtraction and multiplications. If you get enough points, you would get a streak multiplier.
     </string>
 </resources>
