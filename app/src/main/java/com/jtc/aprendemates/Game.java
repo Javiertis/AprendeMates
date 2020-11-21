@@ -24,7 +24,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Game extends AppCompatActivity implements Serializable {
-    static final int[] IMAGENES_NUM = {
+    static final int[] NUM_PICS = {
             R.drawable.ic_num1,
             R.drawable.ic_num2,
             R.drawable.ic_num3,
@@ -35,21 +35,21 @@ public class Game extends AppCompatActivity implements Serializable {
             R.drawable.ic_num8,
             R.drawable.ic_num9
     };
-    static final int[] IMAGENES_VIDA = {
+    static final int[] LIFE_PICS = {
             R.drawable.ic_life1,
             R.drawable.ic_life2,
             R.drawable.ic_life3
     };
-    static final String[] OPERACIONES = {
+    static final String[] OPERATORS = {
             "+",
             "-",
             "x"
     };
     Bundle bundle;
     Player player;
-    ImageView imgNum1, imgNum2, imgVidas;
-    Button btComprobar;
-    TextView txtOperacion, txtScore, txtNum1, txtNum2;
+    ImageView imgNum1, imgNum2, imgLife;
+    Button btCheck;
+    TextView txtOperation, txtScore, txtNum1, txtNum2;
     EditText edTxtNum;
     ValueAnimator failAnimation;
     int expectedResult, n1, n2;
@@ -66,11 +66,11 @@ public class Game extends AppCompatActivity implements Serializable {
 
         imgNum1 = findViewById(R.id.imgNum1);
         imgNum2 = findViewById(R.id.imgNum2);
-        imgVidas = findViewById(R.id.imgVidas);
+        imgLife = findViewById(R.id.imgVidas);
 
-        btComprobar = findViewById(R.id.btComprobar);
+        btCheck = findViewById(R.id.btComprobar);
 
-        txtOperacion = findViewById(R.id.txtOperacion);
+        txtOperation = findViewById(R.id.txtOperacion);
         txtScore = findViewById(R.id.txtScore);
         txtNum1 = findViewById(R.id.txtNum1);
         txtNum2 = findViewById(R.id.txtNum2);
@@ -80,7 +80,7 @@ public class Game extends AppCompatActivity implements Serializable {
         randomFillOperation(player.getActualLevel());
         txtScore.setText(Integer.toString(player.getScore()));
         setLifeImg();
-        btComprobar.setOnClickListener(v -> checkOperation());
+        btCheck.setOnClickListener(v -> checkOperation());
         failAnimation = (ValueAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.error);
         failAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -149,28 +149,28 @@ public class Game extends AppCompatActivity implements Serializable {
 
     void randomFillOperation(Level n) {
         Random r = new Random();
-        op = OPERACIONES[r.nextInt(n.levelValue() + 1)];
-        n1 = r.nextInt(IMAGENES_NUM.length);
-        n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(IMAGENES_NUM.length);
-        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n1]));
-        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n2]));
+        op = OPERATORS[r.nextInt(n.levelValue() + 1)];
+        n1 = r.nextInt(NUM_PICS.length);
+        n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(NUM_PICS.length);
+        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n1]));
+        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n2]));
         expectedResult = operacion(op, n1 + 1, n2 + 1);
     }
 
     void fillOperation() {
-        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n1]));
-        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_NUM[n2]));
+        imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n1]));
+        imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n2]));
         expectedResult = operacion(op, n1 + 1, n2 + 1);
     }
 
     void setLifeImg() {
         if (player.getLife() >= 1) {
-            imgVidas.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), IMAGENES_VIDA[player.getLife() - 1]));
+            imgLife.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), LIFE_PICS[player.getLife() - 1]));
         } else {
-            imgVidas.setImageAlpha(0);
+            imgLife.setImageAlpha(0);
             imgNum1.setImageAlpha(0);
             imgNum2.setImageAlpha(0);
-            txtOperacion.setText("");
+            txtOperation.setText("");
             txtNum1.setText("");
             txtNum2.setText("");
         }
@@ -180,13 +180,13 @@ public class Game extends AppCompatActivity implements Serializable {
         txtNum1.setText(Integer.toString(x));
         txtNum2.setText(Integer.toString(y));
         if (op.equals("+")) {
-            txtOperacion.setText("+");
+            txtOperation.setText("+");
             return x + y;
         } else if (op.equals("-")) {
-            txtOperacion.setText("-");
+            txtOperation.setText("-");
             return x - y;
         } else {
-            txtOperacion.setText("x");
+            txtOperation.setText("x");
             return x * y;
         }
     }
@@ -206,14 +206,14 @@ public class Game extends AppCompatActivity implements Serializable {
                 startActivityPerdido();
             }
             randomFillOperation(player.getActualLevel());
+            bonusAndLevelCheck();
         }
-        bonusAndLevelCheck();
         edTxtNum.setText("");
     }
 
     private void bonusAndLevelCheck() {
         if (player.getScore() == 100 || player.getScore() == 300) {
-            if (player.getInitLevel().compareTo(Level.MEDIUM) <= 0) player.levelUp();
+            if (player.getActualLevel() != Level.HARD) player.levelUp();
             summonToast();
             player.bonusUp();
         }
@@ -234,7 +234,7 @@ public class Game extends AppCompatActivity implements Serializable {
         View view = inflater.inflate(R.layout.custom_toast,
                 (ViewGroup) findViewById(R.id.custom_toast_container));
         TextView tw = view.findViewById(R.id.textToast);
-        if (player.getInitLevel().compareTo(Level.MEDIUM) <= 0) {
+        if (player.getActualLevel() != Level.HARD) {
             tw.setText(R.string.has + R.string.subir_nivel_y + R.string.subir_multiplicador);
         } else {
             tw.setText(R.string.has + R.string.subir_multiplicador);

@@ -15,12 +15,17 @@
     <string name="has">HAS </string>
     <string name="subir_nivel_y">SUBIDO DE NIVEL Y </string>
     <string name="subir_multiplicador">CONSEGUIDO MULTIPLICADOR DE RACHA</string>
-    <string name="info">
-        FÁCIL:
+    <string name="info_facil_titulo">
+        FÁCIL:</string>
+    <string name="info_facil">
         Solo sumas, si consigues suficientes puntos puedes subir de nivel y conseguir un multiplicador.
-        MEDIO:
+        </string>
+    <string name="info_medio_titulo">MEDIO:</string>
+    <string name="info_medio">
         Sumas y restas, si consigues suficientes puntos tambien puedes subir de nivel y conseguir un multiplicador.
-        DIFÍCIL:
+        </string>
+    <string name="info_dificil_titulo">DIFÍCIL:</string>
+    <string name="info_dificil">
         Sumas, restas y multiplicaciones, si consigues suficientes puntos puedes conseguir un multiplicador.
     </string>
 </resources>

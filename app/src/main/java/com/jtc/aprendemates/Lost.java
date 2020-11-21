@@ -15,28 +15,28 @@ import java.util.Calendar;
 
 public class Lost extends AppCompatActivity {
 
-    TextView mensaje;
-    Button salir, reset;
-    Bundle b;
-    Player j;
+    TextView txtMessage;
+    Button btExit, btReset;
+    Bundle bundle;
+    Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost);
-        b = getIntent().getExtras();
-        j = (Player) b.getSerializable("player");
-        salir = findViewById(R.id.btSalir);
-        reset = findViewById(R.id.btReset);
-        salir.setOnClickListener(v -> this.finishAffinity());
-        reset.setOnClickListener(v -> {
+        bundle = getIntent().getExtras();
+        player = (Player) bundle.getSerializable("player");
+        btExit = findViewById(R.id.btExit);
+        btReset = findViewById(R.id.btReset);
+        btExit.setOnClickListener(v -> this.finishAffinity());
+        btReset.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             this.startActivity(intent);
             this.finishAffinity();
         });
-        mensaje = findViewById(R.id.txtMensaje);
-        mensaje.setText(String.format("%s%s%s%d",
-                j.getName(), System.lineSeparator(), getResources().getString(R.string.puntuacion), j.getScore()));
+        txtMessage = findViewById(R.id.txtMessage);
+        txtMessage.setText(String.format("%s%s%s%d",
+                player.getName(), System.lineSeparator(), getResources().getString(R.string.puntuacion), player.getScore()));
         setFinishOnTouchOutside(true);
         saveScore();
     }
@@ -55,10 +55,10 @@ public class Lost extends AppCompatActivity {
         ContentValues insertion = new ContentValues();
 
         insertion.put("game_date", Calendar.getInstance().getTime().toString());
-        insertion.put("name", j.getName());
-        insertion.put("init_level", j.getInitLevel().levelValue() + 1);
-        insertion.put("actual_level", j.getActualLevel().levelValue() + 1);
-        insertion.put("score", j.getScore());
+        insertion.put("name", player.getName());
+        insertion.put("init_level", player.getInitLevel().levelValue() + 1);
+        insertion.put("actual_level", player.getActualLevel().levelValue() + 1);
+        insertion.put("score", player.getScore());
         dataBase.insert("ranking", null, insertion);
         insertion.clear();
         dataBase.close();

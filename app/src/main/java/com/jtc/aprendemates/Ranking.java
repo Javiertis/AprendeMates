@@ -2,13 +2,11 @@ package com.jtc.aprendemates;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jtc.aprendemates.db.AdminSQLiteOpenHelper;
@@ -16,9 +14,8 @@ import com.jtc.aprendemates.db.AdminSQLiteOpenHelper;
 public class Ranking extends AppCompatActivity {
 
     LinearLayout rank;
-    TextView tw;
+    TextView txt;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +26,12 @@ public class Ranking extends AppCompatActivity {
         Cursor row = db.rawQuery("select * from ranking order by score desc, actual_level-init_level desc", null);
         int i = 1;
         while (row.moveToNext()) {
-            tw = new TextView(this, null);
+            txt = new TextView(this, null);
             String str = i + ".- " + row.getInt(4) + " " + row.getString(1) + " " + row.getInt(2) + " " + row.getInt(3);
-            tw.setText(str);
-            tw.setGravity(Gravity.CENTER);
-            tw.setTextAppearance(R.style.txt_juego);
-            rank.addView(tw);
+            txt.setText(str);
+            txt.setGravity(Gravity.CENTER);
+            txt.setTextAppearance(R.style.txt_juego);
+            rank.addView(txt);
             i++;
         }
 

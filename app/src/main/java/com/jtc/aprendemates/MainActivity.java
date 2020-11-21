@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        name = findViewById(R.id.txtNombre);
-        startButton = findViewById(R.id.btEmpezar);
+        name = findViewById(R.id.txtName);
+        startButton = findViewById(R.id.btStart);
         startButton.setOnClickListener(v -> onClickBotonEmpezar());
 
     }
