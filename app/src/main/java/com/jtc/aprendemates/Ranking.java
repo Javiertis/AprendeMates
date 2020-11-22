@@ -2,6 +2,7 @@ package com.jtc.aprendemates;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,11 +28,13 @@ public class Ranking extends AppCompatActivity {
         Cursor row = db.rawQuery("select *,actual_level-init_level from ranking order by score desc, actual_level-init_level desc limit 10", null);
         int i = 1;
         while (row.moveToNext()) {
-            txt = new TextView(this, null);
-            String str = String.format(Locale.ENGLISH, "%2d.- %4d %21s %10d %td/%5$tm/%5$ty", i, row.getInt(4), row.getString(1), row.getInt(5), row.getLong(0));
+            txt = new TextView(this);
+            String str = String.format(Locale.ENGLISH, "%s %td/%2$tm/%2$ty", row.getInt(5), row.getLong(0));
+            str = String.format(Locale.ENGLISH, "%02d.- %-2.4s%-15.14s%s", i, row.getInt(4), row.getString(1), str);
             txt.setText(str);
             txt.setTextAppearance(R.style.txtGame);
             txt.setTextSize(20f);
+            txt.setTypeface(Typeface.MONOSPACE);
             rank.addView(txt);
             i++;
         }
