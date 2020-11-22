@@ -41,20 +41,13 @@ public class Lost extends AppCompatActivity {
         saveScore();
     }
 
-    @Override
-    protected void onPause() {
-        Intent intent = new Intent(this, MainActivity.class);
-        this.startActivity(intent);
-        this.finishAffinity();
-        super.onPause();
-    }
 
     void saveScore() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "admin", null, 1);
         SQLiteDatabase dataBase = admin.getWritableDatabase();
         ContentValues insertion = new ContentValues();
 
-        insertion.put("game_date", Calendar.getInstance().getTime().toString());
+        insertion.put("game_date", Calendar.getInstance().getTimeInMillis());
         insertion.put("name", player.getName());
         insertion.put("init_level", player.getInitLevel().levelValue() + 1);
         insertion.put("actual_level", player.getActualLevel().levelValue() + 1);

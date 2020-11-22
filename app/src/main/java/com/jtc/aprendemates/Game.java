@@ -147,6 +147,7 @@ public class Game extends AppCompatActivity implements Serializable {
         super.onPause();
     }
 
+
     void randomFillOperation(Level n) {
         Random r = new Random();
         op = OPERATORS[r.nextInt(n.levelValue() + 1)];
