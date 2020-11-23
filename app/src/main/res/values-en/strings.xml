@@ -29,4 +29,5 @@
     <string name="info_dificil">
         Sums, subtraction and multiplications. If you get enough points, you would get a streak multiplier.
     </string>
+    <string name="default_name">Player</string>
 </resources>

@@ -28,5 +28,6 @@
     <string name="info_dificil">
         Sumas, restas y multiplicaciones, si consigues suficientes puntos puedes conseguir un multiplicador.
     </string>
-    <string name="ranking" translatable="false">RANKING</string>
+    <string name="ranking" translatable="false">RANKING:</string>
+    <string name="default_name">Jugador</string>
 </resources>

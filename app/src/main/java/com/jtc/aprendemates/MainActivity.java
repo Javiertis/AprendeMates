@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LevelChooser.class);
         Bundle b = new Bundle();
         String nameStr = this.name.getText().toString();
-        b.putString("name", nameStr.equals("") ? "Player" : nameStr);
+        b.putString("name", nameStr.equals("") ? getString(R.string.default_name) : nameStr);
         intent.putExtras(b);
         startActivity(intent);
     }
