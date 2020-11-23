@@ -3,10 +3,12 @@ package com.jtc.aprendemates;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jtc.aprendemates.db.AdminSQLiteOpenHelper;
@@ -18,6 +20,7 @@ public class Ranking extends AppCompatActivity {
     LinearLayout rank;
     TextView txt;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
