@@ -52,7 +52,8 @@ public class Game extends AppCompatActivity implements Serializable {
     TextView txtOperation, txtScore, txtNum1, txtNum2;
     EditText edTxtNum;
     ValueAnimator failAnimation;
-    int expectedResult, n1, n2;
+    long expectedResult, actualResult;
+    int n1, n2;
     String op;
     Drawable oldBackground, oldForeground;
 
@@ -113,8 +114,8 @@ public class Game extends AppCompatActivity implements Serializable {
     @Override
     public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         savedInstanceState.putSerializable("player", player);
-        savedInstanceState.putInt("n1", n1);
-        savedInstanceState.putInt("n2", n2);
+        savedInstanceState.putLong("n1", n1);
+        savedInstanceState.putLong("n2", n2);
         savedInstanceState.putString("op", op);
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -155,13 +156,13 @@ public class Game extends AppCompatActivity implements Serializable {
         n2 = op.equals("-") ? r.nextInt(n1 + 1) : r.nextInt(NUM_PICS.length);
         imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n1]));
         imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n2]));
-        expectedResult = operacion(op, n1 + 1, n2 + 1);
+        expectedResult = operation(op, n1 + 1, n2 + 1);
     }
 
     void fillOperation() {
         imgNum1.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n1]));
         imgNum2.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), NUM_PICS[n2]));
-        expectedResult = operacion(op, n1 + 1, n2 + 1);
+        expectedResult = operation(op, n1 + 1, n2 + 1);
     }
 
     void setLifeImg() {
@@ -177,7 +178,7 @@ public class Game extends AppCompatActivity implements Serializable {
         }
     }
 
-    int operacion(String op, int x, int y) {
+    long operation(String op, int x, int y) {
         txtNum1.setText(Integer.toString(x));
         txtNum2.setText(Integer.toString(y));
         if (op.equals("+")) {
@@ -195,19 +196,26 @@ public class Game extends AppCompatActivity implements Serializable {
     void checkOperation() {
         String resultStr = edTxtNum.getText().toString();
         if (!resultStr.equals("")) {
-            if (Integer.parseInt(resultStr) == expectedResult) {
-                player.scoreUp();
-                txtScore.setText(Integer.toString(player.getScore()));
-            } else if (player.getLife() >= 1) {
-                player.lifeDown();
-                failAnimation.start();
-                setLifeImg();
+            try {
+                actualResult = Long.parseLong(resultStr);
+            } catch (NumberFormatException e) {
+                actualResult = Long.MAX_VALUE;
+            } finally {
+                if (actualResult == expectedResult) {
+                    player.scoreUp();
+                    txtScore.setText(Integer.toString(player.getScore()));
+                }
+                if (player.getLife() >= 1) {
+                    player.lifeDown();
+                    failAnimation.start();
+                    setLifeImg();
+                }
+                if (player.getLife() <= 0) {
+                    startActivityPerdido();
+                }
+                randomFillOperation(player.getActualLevel());
+                bonusAndLevelCheck();
             }
-            if (player.getLife() <= 0) {
-                startActivityPerdido();
-            }
-            randomFillOperation(player.getActualLevel());
-            bonusAndLevelCheck();
         }
         edTxtNum.setText("");
     }
