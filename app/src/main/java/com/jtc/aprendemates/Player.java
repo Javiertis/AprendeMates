@@ -10,6 +10,7 @@ public class Player implements Serializable {
     private int life;
     private int bonus;
 
+
     public Player(String name, String actualLevel, int life, int score) {
         this.name = name;
         this.actualLevel = Level.valueOf(actualLevel);
