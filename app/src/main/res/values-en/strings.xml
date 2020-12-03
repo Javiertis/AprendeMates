@@ -2,32 +2,32 @@
 <resources>
     <string name="app_name">Learn Maths</string>
     <string name="hint_text">Name</string>
-    <string name="facil">EASY</string>
-    <string name="dificil">HARD</string>
-    <string name="vidas">LIVES</string>
-    <string name="puntuacion">SCORE: </string>
-    <string name="comprobar">CHECK</string>
-    <string name="boton_empezar">START</string>
-    <string name="medio">MEDIUM</string>
-    <string name="resultado">Result</string>
-    <string name="perdido">YOU LOST :(</string>
-    <string name="reset">RETRY</string>
-    <string name="salir">EXIT</string>
+    <string name="easy">EASY</string>
+    <string name="hard">HARD</string>
+    <string name="lives">LIVES</string>
+    <string name="score">SCORE: </string>
+    <string name="check">CHECK</string>
+    <string name="start_button">START</string>
+    <string name="medium">MEDIUM</string>
+    <string name="result">Result</string>
+    <string name="lost">YOU LOST :(</string>
+    <string name="retry">RETRY</string>
+    <string name="exit">EXIT</string>
     <string name="has">YOU GOT</string>
-    <string name="subir_nivel_y">LEVEL UP AND</string>
-    <string name="subir_multiplicador">STREAK MULTIPLIER</string>
-    <string name="info_facil_titulo">
+    <string name="level_up_info">LEVEL UP AND</string>
+    <string name="multiplier_up_info">STREAK MULTIPLIER</string>
+    <string name="info_easy_title">
         EASY:</string>
-    <string name="info_facil">
-        Only sums. if you get enough points, you would level up and get a streak multiplier.
+    <string name="info_easy">
+        Only addition. if you get enough points, you would level up and get a streak multiplier.
         </string>
-    <string name="info_medio_titulo">MEDIUM:</string>
-    <string name="info_medio">
-        Sums and subtraction. If you get enough points, you would level up and get a streak multiplier.
+    <string name="info_medium_title">MEDIUM:</string>
+    <string name="info_medium">
+        Addition and subtraction. If you get enough points, you would level up and get a streak multiplier.
        </string>
-    <string name="info_dificil_titulo">HARD:</string>
-    <string name="info_dificil">
-        Sums, subtraction and multiplications. If you get enough points, you would get a streak multiplier.
+    <string name="info_hard_title">HARD:</string>
+    <string name="info_hard">
+        Addition, subtraction and multiplication. If you get enough points, you would get a streak multiplier.
     </string>
     <string name="default_name">Player</string>
 </resources>

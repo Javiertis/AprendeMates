@@ -1,31 +1,31 @@
 <resources>
     <string name="app_name">Aprende Mates</string>
-    <string name="boton_empezar">EMPEZAR</string>
+    <string name="start_button">EMPEZAR</string>
     <string name="hint_text">Nombre</string>
-    <string name="facil">FÁCIL</string>
-    <string name="medio">MEDIO</string>
-    <string name="dificil">DIFÍCIL</string>
-    <string name="vidas">VIDAS</string>
-    <string name="puntuacion">PUNTUACIÓN: </string>
-    <string name="comprobar">COMPROBAR</string>
-    <string name="resultado">Resultado</string>
-    <string name="perdido">HAS PERDIDO :(</string>
-    <string name="reset">VOLVER A JUGAR</string>
-    <string name="salir">SALIR</string>
+    <string name="easy">FÁCIL</string>
+    <string name="medium">MEDIO</string>
+    <string name="hard">DIFÍCIL</string>
+    <string name="lives">VIDAS</string>
+    <string name="score">PUNTUACIÓN: </string>
+    <string name="check">COMPROBAR</string>
+    <string name="result">Resultado</string>
+    <string name="lost">HAS PERDIDO :(</string>
+    <string name="retry">VOLVER A JUGAR</string>
+    <string name="exit">SALIR</string>
     <string name="has">HAS </string>
-    <string name="subir_nivel_y">SUBIDO DE NIVEL Y </string>
-    <string name="subir_multiplicador">CONSEGUIDO MULTIPLICADOR DE RACHA</string>
-    <string name="info_facil_titulo">
+    <string name="level_up_info">SUBIDO DE NIVEL Y </string>
+    <string name="multiplier_up_info">CONSEGUIDO MULTIPLICADOR DE RACHA</string>
+    <string name="info_easy_title">
         FÁCIL:</string>
-    <string name="info_facil">
+    <string name="info_easy">
         Solo sumas, si consigues suficientes puntos puedes subir de nivel y conseguir un multiplicador.
         </string>
-    <string name="info_medio_titulo">MEDIO:</string>
-    <string name="info_medio">
+    <string name="info_medium_title">MEDIO:</string>
+    <string name="info_medium">
         Sumas y restas, si consigues suficientes puntos tambien puedes subir de nivel y conseguir un multiplicador.
         </string>
-    <string name="info_dificil_titulo">DIFÍCIL:</string>
-    <string name="info_dificil">
+    <string name="info_hard_title">DIFÍCIL:</string>
+    <string name="info_hard">
         Sumas, restas y multiplicaciones, si consigues suficientes puntos puedes conseguir un multiplicador.
     </string>
     <string name="ranking" translatable="false">RANKING:</string>

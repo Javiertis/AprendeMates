@@ -244,9 +244,9 @@ public class Game extends AppCompatActivity implements Serializable {
                 (ViewGroup) findViewById(R.id.custom_toast_container));
         TextView tw = view.findViewById(R.id.textToast);
         if (player.getActualLevel() != Level.HARD) {
-            tw.setText(R.string.has + R.string.subir_nivel_y + R.string.subir_multiplicador);
+            tw.setText(R.string.has + R.string.level_up_info + R.string.multiplier_up_info);
         } else {
-            tw.setText(R.string.has + R.string.subir_multiplicador);
+            tw.setText(R.string.has + R.string.multiplier_up_info);
         }
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

@@ -12,19 +12,19 @@ public class Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         TextView tv = findViewById(R.id.infoText);
-        String text = getResources().getString(R.string.info_facil_titulo)
+        String text = getResources().getString(R.string.info_easy_title)
                 + System.lineSeparator()
-                + getResources().getString(R.string.info_facil)
-                + System.lineSeparator()
-                + System.lineSeparator()
-                + getResources().getString(R.string.info_medio_titulo)
-                + System.lineSeparator()
-                + getResources().getString(R.string.info_medio)
+                + getResources().getString(R.string.info_easy)
                 + System.lineSeparator()
                 + System.lineSeparator()
-                + getResources().getString(R.string.info_dificil_titulo)
+                + getResources().getString(R.string.info_medium_title)
                 + System.lineSeparator()
-                + getResources().getString(R.string.info_dificil);
+                + getResources().getString(R.string.info_medium)
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + getResources().getString(R.string.info_hard_title)
+                + System.lineSeparator()
+                + getResources().getString(R.string.info_hard);
         tv.setText(text);
     }
 }

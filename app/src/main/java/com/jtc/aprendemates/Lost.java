@@ -36,7 +36,7 @@ public class Lost extends AppCompatActivity {
         });
         txtMessage = findViewById(R.id.txtMessage);
         txtMessage.setText(String.format("%s%s%s%d",
-                player.getName(), System.lineSeparator(), getResources().getString(R.string.puntuacion), player.getScore()));
+                player.getName(), System.lineSeparator(), getResources().getString(R.string.score), player.getScore()));
         setFinishOnTouchOutside(true);
         saveScore();
     }
