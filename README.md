@@ -1,6 +1,6 @@
-# [Learn Maths](####EN) // [Aprende Mates](####ES)
+# [Learn Maths](#EN) // [Aprende Mates](#ES)
 
-###EN
+### EN
 ---
 Xmas themed game aimed to kids between 6 through 10 in which the player can play up to 3 different levels:
 
@@ -8,10 +8,10 @@ Xmas themed game aimed to kids between 6 through 10 in which the player can play
  - ***Medium***: the game show 2 different kinds of operations, additions and subtraction.
  - ***Hard***: additions, subtraction and multiplication are here to challenge the player. 
  
-###ES
+### ES
 ---
-Juego con tematica navideña recomendado para chavales entre 6 y 10 años:
+Juego con temática navideña recomendado para chavales entre 6 y 10 años:
 
  - ***Facil***: solo sumas.
- - ***Medium***: en este nivel hay dos tipos de operaciones, sumas y restas.
- - ***Hard***: sumas, restas y multiplicaciones están aquí para retar al jugador. 
+ - ***Medio***: en este nivel hay dos tipos de operaciones, sumas y restas.
+ - ***Difícil***: sumas, restas y multiplicaciones están aquí para retar al jugador. 
