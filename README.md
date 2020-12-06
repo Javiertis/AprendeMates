@@ -15,3 +15,5 @@ Juego con temática navideña recomendado para chavales entre 6 y 10 años:
  - ***Facil***: solo sumas.
  - ***Medio***: en este nivel hay dos tipos de operaciones, sumas y restas.
  - ***Difícil***: sumas, restas y multiplicaciones están aquí para retar al jugador. 
+
+Icons made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from [Flaticon](https://www.flaticon.com/).
