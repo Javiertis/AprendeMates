@@ -204,8 +204,7 @@ public class Game extends AppCompatActivity implements Serializable {
                 if (actualResult == expectedResult) {
                     player.scoreUp();
                     txtScore.setText(Integer.toString(player.getScore()));
-                }
-                if (player.getLife() >= 1) {
+                }else if (player.getLife() >= 1) {
                     player.lifeDown();
                     failAnimation.start();
                     setLifeImg();
