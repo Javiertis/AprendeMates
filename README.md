@@ -1,5 +1,5 @@
 # [Learn Maths](#EN) // [Aprende Mates](#ES)
-
+![Java CI with Gradle](https://github.com/Javiertis/AprendeMates/workflows/Java%20CI%20with%20Gradle/badge.svg)
 ### EN
 ---
 Xmas themed game aimed to kids between 6 through 10 in which the player can play up to 3 different levels:
